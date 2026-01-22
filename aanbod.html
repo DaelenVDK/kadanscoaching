@@ -27,27 +27,26 @@
     </nav>
 
     <div class="header-actions">
-  <a class="btn btn--outline btn--sm" href="index.html#aanbod">← Terug</a>
+      <a class="btn btn--outline btn--sm" href="index.html#aanbod">← Terug</a>
 
-  <a
-    class="btn btn--outline btn--sm instagram-btn"
-    href="https://www.instagram.com/kadanscoaching/"
-    target="_blank"
-    rel="noopener"
-    aria-label="Volg ons op Instagram"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <path fill="currentColor"
-        d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26a1.13 1.13 0 0 1 0-2.26Z" />
-    </svg>
-    Volg ons
-  </a>
+      <a
+        class="btn btn--outline btn--sm instagram-btn"
+        href="https://www.instagram.com/kadanscoaching/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Volg ons op Instagram"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path fill="currentColor"
+            d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26a1.13 1.13 0 0 1 0-2.26Z" />
+        </svg>
+        Volg ons
+      </a>
 
-  <a class="btn btn--primary btn--sm" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">
-    Boek afspraak
-  </a>
-</div>
-
+      <a class="btn btn--primary btn--sm booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">
+        Boek afspraak
+      </a>
+    </div>
   </div>
 </header>
 
@@ -56,13 +55,13 @@
     <div class="container page-hero-inner">
       <div>
         <h1>Uitleg per dienst</h1>
-        <p class="muted">
+        <p class="muted" id="aanbodIntro">
           Placeholder-tekst: korte intro over het verloop van testen/coaching en wat de sporter mag verwachten.
         </p>
       </div>
       <div class="page-hero-actions">
         <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-        <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+        <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
       </div>
     </div>
   </section>
@@ -71,15 +70,15 @@
   <section id="lactaat-fiets" class="detail section">
     <div class="container detail-grid">
       <div>
-        <h2>Lactaattest fietsen</h2>
-        <p class="muted">Placeholder-tekst: uitleg protocol, voorbereiding, wat je nadien krijgt (zones/rapport).</p>
+        <h2 id="lactaat-fiets-title">Lactaattest fietsen</h2>
+        <p class="muted" id="lactaat-fiets-desc">Placeholder-tekst: uitleg protocol, voorbereiding, wat je nadien krijgt (zones/rapport).</p>
 
         <div class="info-box">
-          <div><strong>Prijs:</strong> €110</div>
-          <div><strong>Duur:</strong> ± 1u30</div>
+          <div><strong>Prijs:</strong> <span id="lactaat-fiets-price">€110</span></div>
+          <div><strong>Duur:</strong> <span id="lactaat-fiets-duration">± 1u30</span></div>
         </div>
 
-        <ul class="bullets">
+        <ul class="bullets" id="lactaat-fiets-bullets">
           <li>Placeholder: stapsgewijze belasting</li>
           <li>Placeholder: lactaatmetingen + hartslag/vermogen</li>
           <li>Placeholder: drempels & trainingszones</li>
@@ -87,13 +86,13 @@
 
         <div class="detail-actions">
           <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+          <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
         </div>
       </div>
 
       <div class="detail-card">
-        <h3>Wat je krijgt</h3>
-        <p class="muted">Placeholder-tekst: rapport + praktische uitleg hoe je het gebruikt in training.</p>
+        <h3 id="lactaat-fiets-sideTitle">Wat je krijgt</h3>
+        <p class="muted" id="lactaat-fiets-sideText">Placeholder-tekst: rapport + praktische uitleg hoe je het gebruikt in training.</p>
         <div class="divider"></div>
         <h3>Voor wie?</h3>
         <p class="muted">Placeholder-tekst: recreant tot competitief, wedstrijdvoorbereiding, etc.</p>
@@ -105,15 +104,15 @@
   <section id="lactaat-loop" class="detail section alt">
     <div class="container detail-grid">
       <div>
-        <h2>Lactaattest lopen</h2>
-        <p class="muted">Placeholder-tekst: loopbandprotocol, voorbereiding, schoenen, etc.</p>
+        <h2 id="lactaat-loop-title">Lactaattest lopen</h2>
+        <p class="muted" id="lactaat-loop-desc">Placeholder-tekst: loopbandprotocol, voorbereiding, schoenen, etc.</p>
 
         <div class="info-box">
-          <div><strong>Prijs:</strong> €95</div>
-          <div><strong>Duur:</strong> ± 1u15</div>
+          <div><strong>Prijs:</strong> <span id="lactaat-loop-price">€95</span></div>
+          <div><strong>Duur:</strong> <span id="lactaat-loop-duration">± 1u15</span></div>
         </div>
 
-        <ul class="bullets">
+        <ul class="bullets" id="lactaat-loop-bullets">
           <li>Placeholder: stapjes in tempo/vermogen</li>
           <li>Placeholder: zones per pace/HR</li>
           <li>Placeholder: advies voor trainingsopbouw</li>
@@ -121,7 +120,7 @@
 
         <div class="detail-actions">
           <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+          <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
         </div>
       </div>
 
@@ -140,12 +139,12 @@
   <section id="prestatieanalyse" class="detail section">
     <div class="container detail-grid">
       <div>
-        <h2>Prestatieanalyse & fysiologische testing (fietsers)</h2>
-        <p class="muted">
+        <h2 id="prestatieanalyse-title">Prestatieanalyse & fysiologische testing (fietsers)</h2>
+        <p class="muted" id="prestatieanalyse-desc">
           Placeholder-tekst: wat wordt gemeten (vermogen/HR/efficiëntie), voor wie het is en wat het oplevert.
         </p>
 
-        <ul class="bullets">
+        <ul class="bullets" id="prestatieanalyse-bullets">
           <li>Placeholder: testopzet en meetwaarden</li>
           <li>Placeholder: interpretatie van resultaten</li>
           <li>Placeholder: concrete trainingsaanpak</li>
@@ -153,13 +152,13 @@
 
         <div class="detail-actions">
           <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+          <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
         </div>
       </div>
 
       <div class="detail-card">
-        <h3>Praktisch</h3>
-        <p class="muted">Placeholder-tekst: checklist of praktische info.</p>
+        <h3 id="prestatieanalyse-sideTitle">Praktisch</h3>
+        <p class="muted" id="prestatieanalyse-sideText">Placeholder-tekst: checklist of praktische info.</p>
       </div>
     </div>
   </section>
@@ -168,17 +167,17 @@
   <section id="metabool-profiel" class="detail section alt">
     <div class="container detail-grid">
       <div>
-        <h2>Metabool profiel test</h2>
-        <p class="muted">
+        <h2 id="metabool-profiel-title">Metabool profiel test</h2>
+        <p class="muted" id="metabool-profiel-desc">
           Placeholder-tekst: beschrijf het doel en wat deze test extra brengt t.o.v. een lactaattest.
         </p>
 
         <div class="info-box">
-          <div><strong>Prijs:</strong> €110</div>
-          <div><strong>Duur:</strong> ± 1u30</div>
+          <div><strong>Prijs:</strong> <span id="metabool-profiel-price">€110</span></div>
+          <div><strong>Duur:</strong> <span id="metabool-profiel-duration">± 1u30</span></div>
         </div>
 
-        <ul class="bullets">
+        <ul class="bullets" id="metabool-profiel-bullets">
           <li>Placeholder: extra parameters en inzichten</li>
           <li>Placeholder: pacing/fueling toepassen</li>
           <li>Placeholder: geschikt voor wedstrijdvoorbereiding</li>
@@ -186,13 +185,13 @@
 
         <div class="detail-actions">
           <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+          <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
         </div>
       </div>
 
       <div class="detail-card">
-        <h3>Voor wie?</h3>
-        <p class="muted">Placeholder-tekst: lange afstand, specifiek doel, optimalisatie, …</p>
+        <h3 id="metabool-profiel-sideTitle">Voor wie?</h3>
+        <p class="muted" id="metabool-profiel-sideText">Placeholder-tekst: lange afstand, specifiek doel, optimalisatie, …</p>
       </div>
     </div>
   </section>
@@ -201,10 +200,10 @@
   <section id="biomechanisch" class="detail section">
     <div class="container detail-grid">
       <div>
-        <h2>Biomechanische screening (lopers)</h2>
-        <p class="muted">Placeholder-tekst: loopanalyse, techniek, efficiëntie, blessurepreventie.</p>
+        <h2 id="biomechanisch-title">Biomechanische screening (lopers)</h2>
+        <p class="muted" id="biomechanisch-desc">Placeholder-tekst: loopanalyse, techniek, efficiëntie, blessurepreventie.</p>
 
-        <ul class="bullets">
+        <ul class="bullets" id="biomechanisch-bullets">
           <li>Placeholder: bewegingsanalyse</li>
           <li>Placeholder: aandachtspunten & oefeningen</li>
           <li>Placeholder: advies techniek/volume</li>
@@ -212,17 +211,13 @@
 
         <div class="detail-actions">
           <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+          <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
         </div>
       </div>
 
       <div class="detail-card">
-        <h3>Praktisch</h3>
-        <ul class="bullets">
-          <li>Placeholder: loopschoenen</li>
-          <li>Placeholder: sportkleding</li>
-          <li>Placeholder: trainingsdata (optioneel)</li>
-        </ul>
+        <h3 id="biomechanisch-sideTitle">Praktisch</h3>
+        <p class="muted" id="biomechanisch-sideText">Placeholder-tekst: wat meebrengen / praktische info.</p>
       </div>
     </div>
   </section>
@@ -231,12 +226,13 @@
   <section id="coaching" class="detail section alt">
     <div class="container">
       <div class="section-head">
-        <h2>Coaching — 3 pakketten</h2>
-        <p class="muted">
+        <h2 id="coaching-title">Coaching — 3 pakketten</h2>
+        <p class="muted" id="coaching-desc">
           Placeholder-tekst: korte uitleg van de coaching aanpak en voor wie het geschikt is.
         </p>
       </div>
 
+      <!-- (later kan je dit ook dynamisch maken; nu laten we dit statisch staan) -->
       <div class="packages">
         <div class="package">
           <div class="package-top">
@@ -287,12 +283,12 @@
 
       <div class="detail-actions center">
         <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-        <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+        <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
       </div>
     </div>
   </section>
 
-  <!-- Over ons / Gallery placeholders -->
+  <!-- Over ons -->
   <section id="over-ons" class="detail section">
     <div class="container detail-grid">
       <div>
@@ -316,7 +312,7 @@
     <div class="container">
       <div class="detail-actions center">
         <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-        <a class="btn btn--primary" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
+        <a class="btn btn--primary booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">Boek afspraak</a>
       </div>
     </div>
   </section>
@@ -328,5 +324,8 @@
     <p class="muted">Placeholder-tekst: privacy / voorwaarden</p>
   </div>
 </footer>
+
+<!-- CMS content loader -->
+<script src="app.js"></script>
 </body>
 </html>

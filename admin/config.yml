@@ -1,0 +1,82 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "site"
+    label: "Site content"
+    files:
+      - name: "home"
+        label: "Home (index)"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Boekingslink", name: "bookingUrl", widget: "string" }
+
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Tagline", name: "tagline", widget: "string" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Subtitel", name: "lead", widget: "text" }
+              - { label: "Knop tekst (Boek)", name: "ctaBook", widget: "string" }
+              - { label: "Knop tekst (Aanbod)", name: "ctaOffer", widget: "string" }
+
+          - label: "Stats blokken"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "string" }
+
+          - { label: "Aanbod intro", name: "offerIntro", widget: "string" }
+          - { label: "Coaching intro", name: "coachingIntro", widget: "string" }
+
+          - label: "Coaching pakketten (kort op home)"
+            name: "coachingCards"
+            widget: "list"
+            fields:
+              - { label: "Naam", name: "name", widget: "string" }
+              - { label: "Featured", name: "featured", widget: "boolean", default: false }
+              - { label: "Prijs label", name: "priceLabel", widget: "string" }
+              - { label: "Bullets", name: "bullets", widget: "list" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Telefoon", name: "phone", widget: "string", required: false }
+              - { label: "Locatie", name: "location", widget: "string", required: false }
+              - { label: "Over Lukas (kort)", name: "aboutShort", widget: "text" }
+
+      - name: "services"
+        label: "Aanbod details (aanbod.html)"
+        file: "content/aanbod.json"
+        format: "json"
+        fields:
+          - { label: "Intro tekst bovenaan", name: "intro", widget: "text" }
+
+          - label: "Diensten"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "ID (moet matchen met sectie id)", name: "id", widget: "string" }
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Beschrijving", name: "description", widget: "text" }
+              - { label: "Prijs", name: "price", widget: "string", required: false }
+              - { label: "Duur", name: "duration", widget: "string", required: false }
+              - { label: "Bullets", name: "bullets", widget: "list", required: false }
+              - { label: "Sidebar titel", name: "sideTitle", widget: "string", required: false }
+              - { label: "Sidebar tekst", name: "sideText", widget: "text", required: false }

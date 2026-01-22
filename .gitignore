@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node (als je npm gebruikt)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output (als je ooit een build tool gebruikt)
+dist/
+build/
+.out/
+
+# Env files (nooit committen)
+.env
+.env.*
