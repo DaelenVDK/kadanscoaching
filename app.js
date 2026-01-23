@@ -1,19 +1,72 @@
-// app.js — laadt content uit Sanity en vult je HTML
-// ProjectId uit jouw setup (van je screenshot eerder): fnxqcxz0
+// app.js — laadt content uit Sanity en vult index + aanbod (met fallback)
+
 const SANITY_PROJECT_ID = "fnxqcxz0";
 const SANITY_DATASET = "production";
 const SANITY_API_VERSION = "2024-01-01";
+
+// Fallback content: site blijft werken als Sanity faalt / traag is
+const FALLBACK = {
+  bookingUrl: "https://voorbeeld-boekingssysteem.be",
+  tagline: "Coaching • Lactaattesting • Performance",
+  heroTitle: "Train slimmer met data die écht iets zegt",
+  heroLead:
+    "Lactaattesting, prestatieanalyse en coaching voor lopers en fietsers. Op basis van objectieve data krijg je duidelijke trainingszones en een plan dat werkt voor jouw doel.",
+  ctaBook: "Boek je afspraak",
+  ctaOffer: "Bekijk aanbod",
+  offerIntro:
+    "Ontdek het aanbod aan lactaattesten, prestatieanalyses en coaching. Klik op een dienst voor de volledige uitleg.",
+  coachingIntro:
+    "Persoonlijke coaching op maat, gebaseerd op data en afgestemd op jouw doelen.",
+  stats: [
+    { title: "Coaching", text: "3 pakketten (gratis intake)" },
+    { title: "Testing", text: "Lopen & fietsen" },
+    { title: "Focus", text: "Performance & progressie" },
+  ],
+  coachingCards: [
+    {
+      name: "Pakket 1",
+      featured: false,
+      priceLabel: "€60 / maand",
+      bullets: ["Min. 3 maanden", "Gratis intake", "Schema’s + platform"],
+    },
+    {
+      name: "Pakket 2",
+      featured: true,
+      priceLabel: "€80 / maand",
+      bullets: ["Min. 6 maanden", "Gratis intake", "Wekelijkse feedback"],
+    },
+    {
+      name: "Pakket 3",
+      featured: false,
+      priceLabel: "€100 / maand",
+      bullets: ["Min. 6 maanden", "Gratis intake", "Ongelimiteerde communicatie"],
+    },
+  ],
+};
 
 function sanityQueryUrl(groq) {
   const encoded = encodeURIComponent(groq);
   return `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${encoded}`;
 }
 
-async function fetchSanity(groq) {
-  const res = await fetch(sanityQueryUrl(groq), { cache: "no-store" });
-  if (!res.ok) throw new Error(`Sanity query failed (${res.status})`);
-  const json = await res.json();
-  return json.result;
+// Fetch met timeout zodat de site niet “hangt”
+async function fetchSanity(groq, timeoutMs = 6000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(sanityQueryUrl(groq), {
+      cache: "no-store",
+      signal: controller.signal,
+    });
+
+    if (!res.ok) throw new Error(`Sanity query failed (${res.status})`);
+
+    const json = await res.json();
+    return json.result;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function setText(id, value) {
@@ -22,7 +75,7 @@ function setText(id, value) {
 }
 
 function escapeHtml(str) {
-  return String(str)
+  return String(str ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -32,9 +85,14 @@ function escapeHtml(str) {
 
 function setBookingLinks(url) {
   if (!url) return;
-  document.querySelectorAll("a.booking-link").forEach((a) => a.setAttribute("href", url));
+  document.querySelectorAll("a.booking-link").forEach((a) => {
+    a.setAttribute("href", url);
+  });
 }
 
+/* =========================
+   INDEX (home)
+========================= */
 function fillHome(settings) {
   // Header
   setText("brandTagline", settings?.tagline);
@@ -65,8 +123,14 @@ function fillHome(settings) {
 
   // Coaching cards (home)
   const cardsWrap = document.getElementById("coachingCards");
-  if (cardsWrap && Array.isArray(settings?.coachingCards)) {
-    cardsWrap.innerHTML = settings.coachingCards
+  if (cardsWrap) {
+    const cards = Array.isArray(settings?.coachingCards)
+      ? settings.coachingCards
+      : [];
+
+    const safeCards = cards.length >= 3 ? cards : FALLBACK.coachingCards;
+
+    cardsWrap.innerHTML = safeCards
       .map(
         (c) => `
         <div class="package ${c.featured ? "featured" : ""}">
@@ -85,16 +149,56 @@ function fillHome(settings) {
       .join("");
   }
 
-  // Contact (over Lukas mag leeg blijven)
+  // Contact
   setText("contactEmail", settings?.contactEmail);
   setText("contactPhone", settings?.contactPhone);
   setText("contactLocation", settings?.contactLocation);
   setText("aboutShort", settings?.aboutShort);
 }
 
+/* =========================
+   AANBOD (diensten)
+========================= */
+function fillServices(services) {
+  if (!Array.isArray(services)) return;
+
+  services.forEach((service) => {
+    const id = service?.serviceId;
+    if (!id) return;
+
+    setText(`${id}-title`, service.title);
+    setText(`${id}-desc`, service.description);
+    setText(`${id}-price`, service.price);
+    setText(`${id}-duration`, service.duration);
+    setText(`${id}-sideTitle`, service.sideTitle);
+    setText(`${id}-sideText`, service.sideText);
+
+    // ➕ tweede sidebar blok
+    setText(`${id}-sideTitle2`, service.sideTitle2);
+    setText(`${id}-sideText2`, service.sideText2);
+
+    const bulletsEl = document.getElementById(`${id}-bullets`);
+    if (bulletsEl && Array.isArray(service.bullets)) {
+      bulletsEl.innerHTML = service.bullets
+        .map((b) => `<li>${escapeHtml(b)}</li>`)
+        .join("");
+    }
+  });
+}
+
+/* =========================
+   INIT
+========================= */
 (async function init() {
+  const isHome = !!document.getElementById("coachingCards");
+  const isAanbod = !!document.getElementById("aanbodIntro");
+
+  // fallback
+  if (isHome) fillHome(FALLBACK);
+  setBookingLinks(FALLBACK.bookingUrl);
+
   try {
-    // Haal Site instellingen op
+    // ➕ siteSettings uitgebreid (niets verwijderd)
     const settings = await fetchSanity(`*[_type=="siteSettings"][0]{
       bookingUrl,
       tagline,
@@ -104,6 +208,9 @@ function fillHome(settings) {
       ctaOffer,
       offerIntro,
       coachingIntro,
+      aanbodIntro,
+      coachingAanbodDesc,
+      overLukasText,
       contactEmail,
       contactPhone,
       contactLocation,
@@ -112,13 +219,39 @@ function fillHome(settings) {
       coachingCards[]{name,featured,priceLabel,bullets}
     }`);
 
-    if (settings?.bookingUrl) setBookingLinks(settings.bookingUrl);
+    if (settings) {
+      setBookingLinks(settings.bookingUrl || FALLBACK.bookingUrl);
 
-    const path = window.location.pathname;
-    if (path === "/" || path.endsWith("/index.html") || path.endsWith("/")) {
-      fillHome(settings);
+      if (isHome) {
+        fillHome({ ...FALLBACK, ...settings });
+      }
+
+      // ➕ aanbod-pagina placeholders
+      if (isAanbod) {
+        setText("aanbodIntro", settings.aanbodIntro);
+        setText("coaching-desc", settings.coachingAanbodDesc);
+        setText("overLukasText", settings.overLukasText);
+      }
+    }
+
+    // diensten
+    if (isAanbod) {
+      const services = await fetchSanity(`*[_type=="service"] | order(_createdAt asc){
+        serviceId,
+        title,
+        description,
+        price,
+        duration,
+        bullets,
+        sideTitle,
+        sideText,
+        sideTitle2,
+        sideText2
+      }`);
+
+      fillServices(services);
     }
   } catch (e) {
-    console.error("Sanity load error:", e);
+    console.warn("Sanity niet bereikbaar — fallback gebruikt:", e?.message || e);
   }
 })();

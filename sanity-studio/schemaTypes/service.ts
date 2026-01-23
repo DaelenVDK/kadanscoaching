@@ -43,6 +43,16 @@ export const service = defineType({
       type: "text",
       rows: 3,
     }),
+    defineField({ 
+      name: "sideTitle2", 
+      title: "Sidebar titel 2", 
+      type: "string" }),
+    defineField({ 
+      name: "sideText2", 
+      title: "Sidebar tekst 2", 
+      type: "text", 
+      rows: 3 }),
+
   ],
 });
 

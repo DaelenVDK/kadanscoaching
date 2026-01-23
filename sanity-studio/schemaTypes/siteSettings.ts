@@ -64,6 +64,9 @@ export default defineType({
       ],
     }),
 
+    /* ======================
+       HOME
+    ====================== */
     defineField({
       name: "offerIntro",
       title: "Aanbod intro (home)",
@@ -107,6 +110,33 @@ export default defineType({
       ],
     }),
 
+    /* ======================
+       AANBOD PAGINA
+    ====================== */
+    defineField({
+      name: "aanbodIntro",
+      title: "Aanbod pagina – intro (Uitleg per dienst)",
+      type: "text",
+      rows: 3,
+    }),
+
+    defineField({
+      name: "coachingAanbodDesc",
+      title: "Aanbod pagina – coaching beschrijving",
+      type: "text",
+      rows: 3,
+    }),
+
+    defineField({
+      name: "overLukasText",
+      title: "Aanbod pagina – Over Lukas tekst",
+      type: "text",
+      rows: 4,
+    }),
+
+    /* ======================
+       CONTACT
+    ====================== */
     defineField({
       name: "contactEmail",
       title: "Contact e-mail",
@@ -127,9 +157,10 @@ export default defineType({
 
     defineField({
       name: "aboutShort",
-      title: "Over Lukas (kort)",
+      title: "Over Lukas (kort – home)",
       type: "text",
       rows: 3,
     }),
+    
   ],
 });
