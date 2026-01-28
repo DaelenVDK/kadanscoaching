@@ -275,3 +275,17 @@ function fillServices(services) {
     console.warn("Sanity niet bereikbaar — fallback gebruikt:", e?.message || e);
   }
 })();
+// Automatische slideshow - Lactaattest lopen
+(function () {
+  const slideshow = document.querySelector("#lactaat-loop .auto-slideshow");
+  if (!slideshow) return;
+
+  const images = slideshow.querySelectorAll("img");
+  let index = 0;
+
+  setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }, 4000); // wissel elke 4 seconden
+})();

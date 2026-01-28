@@ -189,7 +189,7 @@ a{ color:inherit; text-decoration:none; }
 .stat-title{ font-weight: 900; }
 .stat-text{ color: rgba(255,255,255,0.80); }
 
-/* Slideshow */
+/* Slideshow (homepage) */
 .slideshow{
   position: relative;
   aspect-ratio: 4 / 3;
@@ -209,16 +209,17 @@ a{ color:inherit; text-decoration:none; }
   opacity:0;
   animation: fade 16s infinite;
 }
+
 .slideshow img:nth-child(1){ animation-delay:0s; }
 .slideshow img:nth-child(2){ animation-delay:4s; }
 .slideshow img:nth-child(3){ animation-delay:8s; }
 .slideshow img:nth-child(4){ animation-delay:12s; }
 
+/* FIX: gelijkmatige timing + eerste slide meteen zichtbaar */
 @keyframes fade{
-  0%{ opacity:0; }
-  10%{ opacity:1; }
-  40%{ opacity:1; }
-  50%{ opacity:0; }
+  0%{ opacity:1; }
+  22%{ opacity:1; }
+  25%{ opacity:0; }
   100%{ opacity:0; }
 }
 
@@ -390,12 +391,13 @@ a{ color:inherit; text-decoration:none; }
   gap: 12px;
   flex-wrap:wrap;
 }
+
+/* Instagram knop: icon en tekst netjes */
 .instagram-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
-
 .instagram-btn svg {
   display: block;
 }
@@ -496,15 +498,6 @@ a{ color:inherit; text-decoration:none; }
   }
 }
 
-/* Instagram knop: icon en tekst netjes */
-.instagram-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.instagram-btn svg {
-  display: block;
-}
 /* ===== Fix header overlap op GSM ===== */
 @media (max-width: 520px) {
   /* Laat header in 2 rijen lopen */
@@ -550,4 +543,39 @@ a{ color:inherit; text-decoration:none; }
     width: 16px;
     height: 16px;
   }
+}
+
+/* Rechterkolom bij detailpagina (FAQ + slideshow onder elkaar) */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Slideshow card onder FAQ */
+.slideshow-card {
+  padding: 12px;
+}
+
+/* Automatische slideshow (aanbod detail) */
+.auto-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.auto-slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.auto-slideshow img.active {
+  opacity: 1;
 }
