@@ -78,6 +78,12 @@ export default defineType({
       title: "Coaching intro (home)",
       type: "string",
     }),
+    defineField({
+  name: "coachingCardIntro",
+  title: "Coaching kaart – korte tekst (aanbod)",
+  type: "string",
+}),
+
 
     defineField({
       name: "coachingCards",

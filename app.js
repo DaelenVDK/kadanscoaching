@@ -198,7 +198,7 @@ function fillServices(services) {
   setBookingLinks(FALLBACK.bookingUrl);
 
   try {
-    // ➕ siteSettings uitgebreid (niets verwijderd)
+    // siteSettings
     const settings = await fetchSanity(`*[_type=="siteSettings"][0]{
       bookingUrl,
       tagline,
@@ -226,7 +226,7 @@ function fillServices(services) {
         fillHome({ ...FALLBACK, ...settings });
       }
 
-      // ➕ aanbod-pagina placeholders
+      // aanbod-pagina placeholders
       if (isAanbod) {
         setText("aanbodIntro", settings.aanbodIntro);
         setText("coaching-desc", settings.coachingAanbodDesc);
@@ -234,12 +234,13 @@ function fillServices(services) {
       }
     }
 
-    // diensten
-    if (isAanbod) {
+    // ✅ Diensten ophalen voor aanbod.html én voor index-cards
+    if (isAanbod || isHome) {
       const services = await fetchSanity(`*[_type=="service"] | order(_createdAt asc){
         serviceId,
         title,
         description,
+        cardText,
         price,
         duration,
         bullets,
@@ -249,7 +250,26 @@ function fillServices(services) {
         sideText2
       }`);
 
-      fillServices(services);
+      // aanbod.html details vullen
+      if (isAanbod) {
+        fillServices(services);
+      }
+
+      // index.html cards vullen (6 placeholders)
+      if (isHome && Array.isArray(services)) {
+        services.forEach((s) => {
+          const id = s?.serviceId;
+          if (!id) return;
+
+          const short =
+            (typeof s.cardText === "string" && s.cardText.trim()) ||
+            (typeof s.description === "string" &&
+              s.description.trim().split("\n")[0].trim()) ||
+            null;
+
+          setText(`kaart-${id}-desc`, short);
+        });
+      }
     }
   } catch (e) {
     console.warn("Sanity niet bereikbaar — fallback gebruikt:", e?.message || e);
