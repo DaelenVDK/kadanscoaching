@@ -579,3 +579,19 @@ a{ color:inherit; text-decoration:none; }
 .auto-slideshow img.active {
   opacity: 1;
 }
+
+/* Eén foto in dezelfde layout als slideshow-card */
+.single-media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.single-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
