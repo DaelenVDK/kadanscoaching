@@ -42,6 +42,22 @@ const FALLBACK = {
       bullets: ["Min. 6 maanden", "Gratis intake", "Ongelimiteerde communicatie"],
     },
   ],
+
+  // header fallback (nieuw)
+  brandName: "Lukas Denolf",
+  headerBookingText: "Boek afspraak",
+  instagramUrl: "https://www.instagram.com/kadanscoaching/",
+  instagramText: "Volg ons",
+  brandTaglineAanbod: "Aanbod — details",
+  headerBackText: "← Terug",
+  navHomeOffer: "Aanbod",
+  navHomeCoaching: "Coaching",
+  navHomeAppointment: "Afspraak",
+  navHomeContact: "Contact",
+  navAanbodFiets: "Fiets",
+  navAanbodLopen: "Lopen",
+  navAanbodMetabool: "Metabool",
+  navAanbodCoaching: "Coaching",
 };
 
 function sanityQueryUrl(groq) {
@@ -88,6 +104,41 @@ function setBookingLinks(url) {
   document.querySelectorAll("a.booking-link").forEach((a) => {
     a.setAttribute("href", url);
   });
+}
+
+/* =========================
+   HEADER (NIEUW)
+========================= */
+function fillHeader(settings) {
+  // brand
+  setText("brandName", settings?.brandName);
+
+  // home tagline (bestaat enkel op index)
+  setText("brandTagline", settings?.tagline);
+
+  // aanbod tagline (bestaat enkel op aanbod)
+  setText("brandTaglineAanbod", settings?.brandTaglineAanbod);
+
+  // header buttons
+  setText("headerBookText", settings?.headerBookingText);
+  setText("instagramText", settings?.instagramText);
+
+  const ig = document.getElementById("instagramLink");
+  if (ig && settings?.instagramUrl) ig.setAttribute("href", settings.instagramUrl);
+
+  setText("headerBackText", settings?.headerBackText);
+
+  // nav home labels
+  setText("navHomeOffer", settings?.navHomeOffer);
+  setText("navHomeCoaching", settings?.navHomeCoaching);
+  setText("navHomeAppointment", settings?.navHomeAppointment);
+  setText("navHomeContact", settings?.navHomeContact);
+
+  // nav aanbod labels
+  setText("navAanbodFiets", settings?.navAanbodFiets);
+  setText("navAanbodLopen", settings?.navAanbodLopen);
+  setText("navAanbodMetabool", settings?.navAanbodMetabool);
+  setText("navAanbodCoaching", settings?.navAanbodCoaching);
 }
 
 /* =========================
@@ -197,10 +248,31 @@ function fillServices(services) {
   if (isHome) fillHome(FALLBACK);
   setBookingLinks(FALLBACK.bookingUrl);
 
+  // ✅ header fallback op elke pagina
+  fillHeader(FALLBACK);
+
   try {
     // siteSettings
     const settings = await fetchSanity(`*[_type=="siteSettings"][0]{
       bookingUrl,
+
+      // header (nieuw)
+      brandName,
+      headerBookingText,
+      instagramUrl,
+      instagramText,
+      brandTaglineAanbod,
+      headerBackText,
+      navHomeOffer,
+      navHomeCoaching,
+      navHomeAppointment,
+      navHomeContact,
+      navAanbodFiets,
+      navAanbodLopen,
+      navAanbodMetabool,
+      navAanbodCoaching,
+
+      // bestaand
       tagline,
       heroTitle,
       heroLead,
@@ -221,6 +293,9 @@ function fillServices(services) {
 
     if (settings) {
       setBookingLinks(settings.bookingUrl || FALLBACK.bookingUrl);
+
+      // ✅ header uit Sanity op elke pagina
+      fillHeader({ ...FALLBACK, ...settings });
 
       if (isHome) {
         fillHome({ ...FALLBACK, ...settings });
@@ -275,6 +350,7 @@ function fillServices(services) {
     console.warn("Sanity niet bereikbaar — fallback gebruikt:", e?.message || e);
   }
 })();
+
 // Automatische slideshow - Lactaattest lopen
 (function () {
   const slideshow = document.querySelector("#lactaat-loop .auto-slideshow");

@@ -6,6 +6,104 @@ export default defineType({
   type: "document",
 
   fields: [
+    /* ======================
+       HEADER (NIEUW)
+    ====================== */
+    defineField({
+      name: "brandName",
+      title: "Brand naam (header)",
+      type: "string",
+      initialValue: "Lukas Denolf",
+    }),
+
+    defineField({
+      name: "headerBookingText",
+      title: "Header knoptekst – Booking",
+      type: "string",
+      initialValue: "Boek afspraak",
+    }),
+
+    defineField({
+      name: "instagramUrl",
+      title: "Instagram URL",
+      type: "url",
+      initialValue: "https://www.instagram.com/kadanscoaching/",
+    }),
+
+    defineField({
+      name: "instagramText",
+      title: "Instagram knoptekst",
+      type: "string",
+      initialValue: "Volg ons",
+    }),
+
+    defineField({
+      name: "brandTaglineAanbod",
+      title: "Tagline (aanbod pagina header)",
+      type: "string",
+      initialValue: "Aanbod — details",
+    }),
+
+    defineField({
+      name: "headerBackText",
+      title: "Aanbod pagina – terug knoptekst",
+      type: "string",
+      initialValue: "← Terug",
+    }),
+
+    defineField({
+      name: "navHomeOffer",
+      title: "Navigatie – Home: Aanbod",
+      type: "string",
+      initialValue: "Aanbod",
+    }),
+    defineField({
+      name: "navHomeCoaching",
+      title: "Navigatie – Home: Coaching",
+      type: "string",
+      initialValue: "Coaching",
+    }),
+    defineField({
+      name: "navHomeAppointment",
+      title: "Navigatie – Home: Afspraak",
+      type: "string",
+      initialValue: "Afspraak",
+    }),
+    defineField({
+      name: "navHomeContact",
+      title: "Navigatie – Home: Contact",
+      type: "string",
+      initialValue: "Contact",
+    }),
+
+    defineField({
+      name: "navAanbodFiets",
+      title: "Navigatie – Aanbod: Fiets",
+      type: "string",
+      initialValue: "Fiets",
+    }),
+    defineField({
+      name: "navAanbodLopen",
+      title: "Navigatie – Aanbod: Lopen",
+      type: "string",
+      initialValue: "Lopen",
+    }),
+    defineField({
+      name: "navAanbodMetabool",
+      title: "Navigatie – Aanbod: Metabool",
+      type: "string",
+      initialValue: "Metabool",
+    }),
+    defineField({
+      name: "navAanbodCoaching",
+      title: "Navigatie – Aanbod: Coaching",
+      type: "string",
+      initialValue: "Coaching",
+    }),
+
+    /* ======================
+       BESTAAND
+    ====================== */
     defineField({
       name: "bookingUrl",
       title: "Boekingslink",
@@ -78,12 +176,12 @@ export default defineType({
       title: "Coaching intro (home)",
       type: "string",
     }),
-    defineField({
-  name: "coachingCardIntro",
-  title: "Coaching kaart – korte tekst (aanbod)",
-  type: "string",
-}),
 
+    defineField({
+      name: "coachingCardIntro",
+      title: "Coaching kaart – korte tekst (aanbod)",
+      type: "string",
+    }),
 
     defineField({
       name: "coachingCards",
@@ -167,6 +265,5 @@ export default defineType({
       type: "text",
       rows: 3,
     }),
-    
   ],
 });

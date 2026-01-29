@@ -14,21 +14,22 @@
     <a class="brand" href="index.html" aria-label="Naar start">
       <img class="logo" src="images/logo.jpg" alt="Logo Lukas Denolf" />
       <div class="brand-text">
-        <div class="brand-name">Lukas Denolf</div>
+        <div class="brand-name" id="brandName">Lukas Denolf</div>
         <div class="brand-tag" id="brandTagline">Coaching • Lactaattesting • Performance</div>
       </div>
     </a>
 
     <nav class="nav" aria-label="Navigatie">
-      <a href="#aanbod">Aanbod</a>
-      <a href="#coaching">Coaching</a>
-      <a href="#afspraak">Afspraak</a>
-      <a href="#contact">Contact</a>
+      <a id="navHomeOffer" href="#aanbod">Aanbod</a>
+      <a id="navHomeCoaching" href="#coaching">Coaching</a>
+      <a id="navHomeAppointment" href="#afspraak">Afspraak</a>
+      <a id="navHomeContact" href="#contact">Contact</a>
     </nav>
 
     <div class="header-actions">
       <a
         class="btn btn--outline btn--sm instagram-btn"
+        id="instagramLink"
         href="https://www.instagram.com/kadanscoaching/"
         target="_blank"
         rel="noopener"
@@ -40,7 +41,7 @@
             d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26a1.13 1.13 0 0 1 0-2.26Z"
           />
         </svg>
-        Volg ons
+        <span id="instagramText">Volg ons</span>
       </a>
 
       <!-- Header booking button (booking-link) -->
@@ -50,7 +51,7 @@
         target="_blank"
         rel="noopener"
       >
-        Boek afspraak
+        <span id="headerBookText">Boek afspraak</span>
       </a>
     </div>
   </div>
