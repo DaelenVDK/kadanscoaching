@@ -107,7 +107,7 @@ function setBookingLinks(url) {
 }
 
 /* =========================
-   HEADER (NIEUW)
+   HEADER
 ========================= */
 function fillHeader(settings) {
   // brand
@@ -238,17 +238,57 @@ function fillServices(services) {
 }
 
 /* =========================
+   REVIEWS SLIDESHOW (home)
+========================= */
+function renderReviews(reviews) {
+  const container = document.getElementById("reviewSlides");
+  if (!container || !Array.isArray(reviews) || reviews.length === 0) return;
+
+  container.innerHTML = reviews
+    .map(
+      (r, i) => `
+      <div class="review ${i === 0 ? "active" : ""}">
+        <div class="review-name">${escapeHtml(r.name || "")}</div>
+        <div class="review-stars">${"★".repeat(Number(r.stars) || 0)}</div>
+        <div class="review-text">“${escapeHtml(r.text || "")}”</div>
+      </div>
+    `
+    )
+    .join("");
+
+  let index = 0;
+  const slides = container.querySelectorAll(".review");
+  if (!slides.length) return;
+
+  const prevBtn = document.getElementById("reviewPrev");
+  const nextBtn = document.getElementById("reviewNext");
+
+  prevBtn?.addEventListener("click", () => {
+    slides[index].classList.remove("active");
+    index = (index - 1 + slides.length) % slides.length;
+    slides[index].classList.add("active");
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  });
+}
+
+/* =========================
    INIT
 ========================= */
 (async function init() {
   const isHome = !!document.getElementById("coachingCards");
   const isAanbod = !!document.getElementById("aanbodIntro");
+  const hasReviews = !!document.getElementById("reviewSlides");
 
   // fallback
   if (isHome) fillHome(FALLBACK);
   setBookingLinks(FALLBACK.bookingUrl);
 
-  // ✅ header fallback op elke pagina
+  // header fallback op elke pagina
   fillHeader(FALLBACK);
 
   try {
@@ -256,7 +296,7 @@ function fillServices(services) {
     const settings = await fetchSanity(`*[_type=="siteSettings"][0]{
       bookingUrl,
 
-      // header (nieuw)
+      // header
       brandName,
       headerBookingText,
       instagramUrl,
@@ -294,7 +334,7 @@ function fillServices(services) {
     if (settings) {
       setBookingLinks(settings.bookingUrl || FALLBACK.bookingUrl);
 
-      // ✅ header uit Sanity op elke pagina
+      // header uit Sanity op elke pagina
       fillHeader({ ...FALLBACK, ...settings });
 
       if (isHome) {
@@ -309,7 +349,7 @@ function fillServices(services) {
       }
     }
 
-    // ✅ Diensten ophalen voor aanbod.html én voor index-cards
+    // Diensten ophalen voor aanbod.html én voor index-cards
     if (isAanbod || isHome) {
       const services = await fetchSanity(`*[_type=="service"] | order(_createdAt asc){
         serviceId,
@@ -345,6 +385,17 @@ function fillServices(services) {
           setText(`kaart-${id}-desc`, short);
         });
       }
+    }
+
+    // Reviews ophalen (alleen als de sectie bestaat)
+    if (hasReviews) {
+      const reviews = await fetchSanity(`*[_type=="review"] | order(_createdAt asc){
+        name,
+        stars,
+        text
+      }`);
+
+      renderReviews(reviews);
     }
   } catch (e) {
     console.warn("Sanity niet bereikbaar — fallback gebruikt:", e?.message || e);
