@@ -201,39 +201,53 @@
 
 
   <!-- Prestatieanalyse -->
-  <section id="prestatieanalyse" class="detail section">
-    <div class="container detail-grid">
-      <div>
-        <h2 id="prestatieanalyse-title">Prestatieanalyse & fysiologische testing (fietsers)</h2>
-        <p class="muted" id="prestatieanalyse-desc">
-          Placeholder-tekst: wat wordt gemeten (vermogen/HR/efficiëntie), voor wie het is en wat het oplevert.
-        </p>
+<section id="prestatieanalyse" class="detail section">
+  <div class="container detail-grid">
 
-        <ul class="bullets" id="prestatieanalyse-bullets">
-          <li>Placeholder: testopzet en meetwaarden</li>
-          <li>Placeholder: interpretatie van resultaten</li>
-          <li>Placeholder: concrete trainingsaanpak</li>
-        </ul>
+    <!-- Linkerkolom -->
+    <div>
+      <h2 id="prestatieanalyse-title">Prestatieanalyse & fysiologische testing (fietsers)</h2>
+      <p class="muted" id="prestatieanalyse-desc">
+        Placeholder-tekst: wat wordt gemeten (vermogen/HR/efficiëntie), voor wie het is en wat het oplevert.
+      </p>
 
-        <div class="detail-actions">
-          <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a
-            class="btn btn--primary booking-link"
-            href="https://voorbeeld-boekingssysteem.be"
-            target="_blank"
-            rel="noopener"
-          >
-            Boek afspraak
-          </a>
-        </div>
+      <!-- ✅ komt uit Sanity: service.price & service.duration -->
+      <div class="info-box">
+        <div><strong>Prijs:</strong> <span id="prestatieanalyse-price">—</span></div>
+        <div><strong>Duur:</strong> <span id="prestatieanalyse-duration">—</span></div>
       </div>
 
+      <ul class="bullets" id="prestatieanalyse-bullets">
+        <li>Placeholder: testopzet en meetwaarden</li>
+        <li>Placeholder: interpretatie van resultaten</li>
+        <li>Placeholder: concrete trainingsaanpak</li>
+      </ul>
+
+      <div class="detail-actions">
+        <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
+        <a
+          class="btn btn--primary booking-link"
+          href="https://voorbeeld-boekingssysteem.be"
+          target="_blank"
+          rel="noopener"
+        >
+          Boek afspraak
+        </a>
+      </div>
+    </div>
+
+    <!-- Rechterkolom -->
+    <div class="right-column">
       <div class="detail-card">
         <h3 id="prestatieanalyse-sideTitle">Praktisch</h3>
         <p class="muted" id="prestatieanalyse-sideText">Placeholder-tekst: checklist of praktische info.</p>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
+
 
   <!-- Metabool profiel -->
   <section id="metabool-profiel" class="detail section alt">
@@ -277,40 +291,55 @@
     </div>
   </section>
 
-  <!-- Biomechanisch -->
-  <section id="biomechanisch" class="detail section">
-    <div class="container detail-grid">
-      <div>
-        <h2 id="biomechanisch-title">Biomechanische screening (lopers)</h2>
-        <p class="muted" id="biomechanisch-desc">
-          Placeholder-tekst: loopanalyse, techniek, efficiëntie, blessurepreventie.
-        </p>
+ <!-- Biomechanisch -->
+<section id="biomechanisch" class="detail section">
+  <div class="container detail-grid">
 
-        <ul class="bullets" id="biomechanisch-bullets">
-          <li>Placeholder: bewegingsanalyse</li>
-          <li>Placeholder: aandachtspunten & oefeningen</li>
-          <li>Placeholder: advies techniek/volume</li>
-        </ul>
+    <!-- Linkerkolom -->
+    <div>
+      <h2 id="biomechanisch-title">Biomechanische screening (lopers)</h2>
+      <p class="muted" id="biomechanisch-desc">
+        Placeholder-tekst: loopanalyse, techniek, efficiëntie, blessurepreventie.
+      </p>
 
-        <div class="detail-actions">
-          <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
-          <a
-            class="btn btn--primary booking-link"
-            href="https://voorbeeld-boekingssysteem.be"
-            target="_blank"
-            rel="noopener"
-          >
-            Boek afspraak
-          </a>
-        </div>
+      <!-- ✅ prijs & duur uit Sanity -->
+      <div class="info-box">
+        <div><strong>Prijs:</strong> <span id="biomechanisch-price">—</span></div>
+        <div><strong>Duur:</strong> <span id="biomechanisch-duration">—</span></div>
       </div>
 
-      <div class="detail-card">
-        <h3 id="biomechanisch-sideTitle">Praktisch</h3>
-        <p class="muted" id="biomechanisch-sideText">Placeholder-tekst: wat meebrengen / praktische info.</p>
+      <ul class="bullets" id="biomechanisch-bullets">
+        <li>Placeholder: bewegingsanalyse</li>
+        <li>Placeholder: aandachtspunten & oefeningen</li>
+        <li>Placeholder: advies techniek/volume</li>
+      </ul>
+
+      <div class="detail-actions">
+        <a class="btn btn--outline" href="index.html#aanbod">← Terug naar overzicht</a>
+        <a
+          class="btn btn--primary booking-link"
+          href="https://voorbeeld-boekingssysteem.be"
+          target="_blank"
+          rel="noopener"
+        >
+          Boek afspraak
+        </a>
       </div>
     </div>
-  </section>
+
+    <!-- Rechterkolom (zelfde layout als andere diensten) -->
+    <div class="right-column">
+      <div class="detail-card">
+        <h3 id="biomechanisch-sideTitle">Praktisch</h3>
+        <p class="muted" id="biomechanisch-sideText">
+          Placeholder-tekst: wat meebrengen / praktische info.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- Coaching -->
   <section id="coaching" class="detail section alt">
