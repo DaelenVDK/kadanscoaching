@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coaching — Lukas Denolf</title>
+  <meta name="description" content="Coaching op maat voor lopers en fietsers. Kies het pakket dat past bij jouw doel en niveau." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html" aria-label="Naar start">
+      <img class="logo" src="images/logo.jpg" alt="Logo Lukas Denolf" />
+      <div class="brand-text">
+        <div class="brand-name" id="brandName">Lukas Denolf</div>
+        <div class="brand-tag" id="brandTagline">Coaching • Lactaattesting • Performance</div>
+      </div>
+    </a>
+
+    <!-- Hamburger -->
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="siteNav"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="siteNav" aria-label="Navigatie">
+      <a id="navHomeOffer" href="testing.html">Testing</a>
+      <a id="navHomeCoaching" href="coaching.html">Coaching</a>
+      <a id="navHomeContact" href="over-ons.html">Over ons</a>
+      <a id="navHomeAppointment" href="index.html#afspraak">Afspraak</a>
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class="btn btn--outline btn--sm instagram-btn"
+        id="instagramLink"
+        href="https://www.instagram.com/kadanscoaching/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Volg ons op Instagram"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26a1.13 1.13 0 0 1 0-2.26Z"
+          />
+        </svg>
+        <span id="instagramText">Volg ons</span>
+      </a>
+
+      <a
+        class="btn btn--primary btn--sm booking-link"
+        href="https://voorbeeld-boekingssysteem.be"
+        target="_blank"
+        rel="noopener"
+      >
+        <span id="headerBookText">Boek afspraak</span>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div>
+        <h1>Coaching</h1>
+        <p class="muted" id="coachingIntro">
+          Placeholder-tekst: korte uitleg over coaching aanpak en voor wie het geschikt is.
+        </p>
+      </div>
+
+      <div class="page-hero-actions">
+        <a class="btn btn--outline" href="index.html#coaching">← Terug naar overzicht</a>
+        <a
+          class="btn btn--primary booking-link"
+          href="https://voorbeeld-boekingssysteem.be"
+          target="_blank"
+          rel="noopener"
+        >
+          Boek afspraak
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHING PAKKETTEN (wordt door app.js gevuld via coachingCards) -->
+  <section class="section alt" id="coaching">
+    <div class="container">
+      <div class="section-head">
+        <h2>Coaching pakketten</h2>
+        <p class="muted">
+          Kies het pakket dat past bij jouw doelen. Elk pakket start met een gratis intakegesprek.
+        </p>
+      </div>
+
+      <!-- ⚠️ id is belangrijk: app.js gebruikt dit om cards te renderen -->
+      <div class="packages" id="coachingCards">
+        <!-- fallback markup (wordt overschreven door JS) -->
+        <div class="package">
+          <div class="package-top">
+            <h3>Pakket 1</h3>
+            <span class="tag">€60 / maand</span>
+          </div>
+          <ul>
+            <li>Min. 3 maanden</li>
+            <li>Gratis intake</li>
+            <li>Schema’s + platform</li>
+          </ul>
+          <a class="btn btn--outline btn--block booking-link" href="https://voorbeeld-boekingssysteem.be" target="_blank" rel="noopener">
+            Boek afspraak
+          </a>
+        </div>
+      </div>
+
+      <div class="detail-actions center" style="margin-top:18px;">
+        <a class="btn btn--outline" href="testing.html">Bekijk testing →</a>
+        <a
+          class="btn btn--primary booking-link"
+          href="https://voorbeeld-boekingssysteem.be"
+          target="_blank"
+          rel="noopener"
+        >
+          Boek afspraak
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKWIJZE / AANPAK (statisch, kan later naar Sanity als je wil) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Hoe werkt coaching?</h2>
+        <p class="muted">
+          Coaching is altijd maatwerk. We bouwen stap voor stap op, met duidelijke feedback en haalbare doelen.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>1. Intake</h3>
+          <p class="muted">
+            We bespreken je doelen, huidige training, wedstrijdplanning en eventuele beperkingen of blessures.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>2. Trainingsplan</h3>
+          <p class="muted">
+            Je krijgt een plan dat past bij jouw agenda en niveau, met duidelijke zones en focuspunten.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>3. Opvolging</h3>
+          <p class="muted">
+            Regelmatige feedback en bijsturing op basis van je progressie, herstel en trainingen.
+          </p>
+        </article>
+      </div>
+
+      <div class="detail-actions center" style="margin-top:18px;">
+        <a
+          class="btn btn--primary btn--lg booking-link"
+          href="https://voorbeeld-boekingssysteem.be"
+          target="_blank"
+          rel="noopener"
+        >
+          Boek afspraak
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA CTA -->
+  <section class="section alt">
+    <div class="container cta">
+      <div>
+        <h2>Klaar om te starten?</h2>
+        <p class="muted">
+          Boek je afspraak en we bekijken samen welk pakket het best bij jou past.
+        </p>
+      </div>
+
+      <a
+        class="btn btn--primary btn--lg booking-link"
+        href="https://voorbeeld-boekingssysteem.be"
+        target="_blank"
+        rel="noopener"
+      >
+        Boek afspraak
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© 2026 Lukas Denolf</p>
+    <p class="muted">Privacy & voorwaarden</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

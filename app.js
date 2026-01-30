@@ -43,7 +43,7 @@ const FALLBACK = {
     },
   ],
 
-  // header fallback (nieuw)
+  // header fallback
   brandName: "Lukas Denolf",
   headerBookingText: "Boek afspraak",
   instagramUrl: "https://www.instagram.com/kadanscoaching/",
@@ -116,7 +116,7 @@ function fillHeader(settings) {
   // home tagline (bestaat enkel op index)
   setText("brandTagline", settings?.tagline);
 
-  // aanbod tagline (bestaat enkel op aanbod)
+  // aanbod tagline (bestaat enkel op aanbod / sommige pagina's)
   setText("brandTaglineAanbod", settings?.brandTaglineAanbod);
 
   // header buttons
@@ -192,7 +192,7 @@ function fillHome(settings) {
           <ul>
             ${(c.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join("")}
           </ul>
-          <a class="btn ${c.featured ? "btn--primary" : "btn--outline"} btn--block" href="aanbod.html#coaching">
+          <a class="btn ${c.featured ? "btn--primary" : "btn--outline"} btn--block" href="coaching.html">
             Bekijk details
           </a>
         </div>`
@@ -208,7 +208,7 @@ function fillHome(settings) {
 }
 
 /* =========================
-   AANBOD (diensten)
+   AANBOD/TESTING (diensten)
 ========================= */
 function fillServices(services) {
   if (!Array.isArray(services)) return;
@@ -224,7 +224,7 @@ function fillServices(services) {
     setText(`${id}-sideTitle`, service.sideTitle);
     setText(`${id}-sideText`, service.sideText);
 
-    // ➕ tweede sidebar blok
+    // tweede sidebar blok
     setText(`${id}-sideTitle2`, service.sideTitle2);
     setText(`${id}-sideText2`, service.sideText2);
 
@@ -238,7 +238,7 @@ function fillServices(services) {
 }
 
 /* =========================
-   REVIEWS SLIDESHOW (home)
+   REVIEWS SLIDESHOW
 ========================= */
 function renderReviews(reviews) {
   const container = document.getElementById("reviewSlides");
@@ -281,7 +281,7 @@ function renderReviews(reviews) {
 ========================= */
 (async function init() {
   const isHome = !!document.getElementById("coachingCards");
-  const isAanbod = !!document.getElementById("aanbodIntro");
+  const isAanbod = !!document.getElementById("aanbodIntro"); // gebruikt door testing.html & (truc) over-ons.html
   const hasReviews = !!document.getElementById("reviewSlides");
 
   // fallback
@@ -292,8 +292,8 @@ function renderReviews(reviews) {
   fillHeader(FALLBACK);
 
   try {
-    // siteSettings
-    const settings = await fetchSanity(`*[_type=="siteSettings"][0]{
+    // ✅ siteSettings: pak altijd de meest recent aangepaste (belangrijk als je per ongeluk 2 docs hebt)
+    const settings = await fetchSanity(`*[_type=="siteSettings"] | order(_updatedAt desc)[0]{
       bookingUrl,
 
       // header
@@ -341,7 +341,7 @@ function renderReviews(reviews) {
         fillHome({ ...FALLBACK, ...settings });
       }
 
-      // aanbod-pagina placeholders
+      // testing/over-ons placeholders
       if (isAanbod) {
         setText("aanbodIntro", settings.aanbodIntro);
         setText("coaching-desc", settings.coachingAanbodDesc);
@@ -349,7 +349,7 @@ function renderReviews(reviews) {
       }
     }
 
-    // Diensten ophalen voor aanbod.html én voor index-cards
+    // Diensten ophalen voor testing.html én voor index-cards
     if (isAanbod || isHome) {
       const services = await fetchSanity(`*[_type=="service"] | order(_createdAt asc){
         serviceId,
@@ -365,12 +365,12 @@ function renderReviews(reviews) {
         sideText2
       }`);
 
-      // aanbod.html details vullen
+      // testing.html details vullen
       if (isAanbod) {
         fillServices(services);
       }
 
-      // index.html cards vullen (6 placeholders)
+      // index.html cards vullen (placeholders)
       if (isHome && Array.isArray(services)) {
         services.forEach((s) => {
           const id = s?.serviceId;
@@ -415,4 +415,42 @@ function renderReviews(reviews) {
     index = (index + 1) % images.length;
     images[index].classList.add("active");
   }, 4000); // wissel elke 4 seconden
+})();
+
+/* =========================
+   HAMBURGER MENU (mobile)
+========================= */
+(function () {
+  const header = document.querySelector(".site-header");
+  const btn = document.getElementById("navToggle");
+  const nav = document.getElementById("siteNav");
+
+  if (!header || !btn || !nav) return;
+
+  function closeMenu() {
+    header.classList.remove("nav-open");
+    btn.setAttribute("aria-expanded", "false");
+  }
+
+  btn.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("nav-open");
+    btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  // Close when clicking a link
+  nav.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", closeMenu);
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!header.classList.contains("nav-open")) return;
+    if (header.contains(e.target)) return;
+    closeMenu();
+  });
+
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
 })();

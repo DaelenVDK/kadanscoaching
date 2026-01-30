@@ -9,8 +9,10 @@
 </head>
 
 <body>
+
 <header class="site-header">
   <div class="container header-inner">
+
     <a class="brand" href="index.html" aria-label="Naar start">
       <img class="logo" src="images/logo.jpg" alt="Logo Lukas Denolf" />
       <div class="brand-text">
@@ -19,11 +21,23 @@
       </div>
     </a>
 
-    <nav class="nav" aria-label="Navigatie">
-      <a id="navHomeOffer" href="#aanbod">Aanbod</a>
-      <a id="navHomeCoaching" href="#coaching">Coaching</a>
+    <!-- Hamburger -->
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="siteNav"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="siteNav" aria-label="Navigatie">
+      <a id="navHomeOffer" href="testing.html">Testing</a>
+      <a id="navHomeCoaching" href="coaching.html">Coaching</a>
+      <a id="navHomeContact" href="over-ons.html">Over ons</a>
       <a id="navHomeAppointment" href="#afspraak">Afspraak</a>
-      <a id="navHomeContact" href="#contact">Contact</a>
     </nav>
 
     <div class="header-actions">
@@ -44,7 +58,6 @@
         <span id="instagramText">Volg ons</span>
       </a>
 
-      <!-- Header booking button (booking-link) -->
       <a
         class="btn btn--primary btn--sm booking-link"
         href="https://voorbeeld-boekingssysteem.be"
@@ -54,10 +67,12 @@
         <span id="headerBookText">Boek afspraak</span>
       </a>
     </div>
+
   </div>
 </header>
 
 <main id="top">
+
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
@@ -65,12 +80,10 @@
         <h1 id="heroTitle">Train slimmer met data die écht iets zegt</h1>
 
         <p class="lead" id="heroLead">
-          Placeholder-tekst: korte intro over Lukas zijn aanpak en voor wie het bedoeld is
-          (lopers, fietsers, duursporters). Focus op duidelijke zones, progressie en praktische begeleiding.
+          Lactaattesting, prestatieanalyse en coaching voor lopers en fietsers. Op basis van objectieve data krijg je duidelijke trainingszones en een plan dat werkt voor jouw doel.
         </p>
 
         <div class="hero-actions">
-          <!-- Hero booking button (booking-link) -->
           <a
             class="btn btn--primary booking-link"
             href="https://voorbeeld-boekingssysteem.be"
@@ -118,115 +131,61 @@
       <div class="section-head">
         <h2>Aanbod</h2>
         <p class="muted" id="offerIntro">
-          Placeholder-tekst: korte zin die het aanbod samenvat. Klik op een dienst voor de volledige uitleg.
+          Ontdek het aanbod aan testen en coaching. Klik door voor details.
         </p>
       </div>
 
       <div class="grid">
-        <a class="card-link" href="aanbod.html#lactaat-fiets">
+        <a class="card-link" href="testing.html#lactaat-fiets">
           <article class="card">
             <h3>Lactaattest fietsen</h3>
-            <p id="kaart-lactaat-fiets-desc">Placeholder-tekst: korte uitleg van 1–2 zinnen.</p>
-            <span class="card-cta">Bekijk uitleg →</span>
+            <p id="kaart-lactaat-fiets-desc">Korte uitleg (1–2 zinnen).</p>
+            <span class="card-cta">Bekijk testing →</span>
           </article>
         </a>
 
-        <a class="card-link" href="aanbod.html#lactaat-loop">
+        <a class="card-link" href="testing.html#lactaat-loop">
           <article class="card">
             <h3>Lactaattest lopen</h3>
-            <p id="kaart-lactaat-loop-desc">Placeholder-tekst: korte uitleg van 1–2 zinnen.</p>
-            <span class="card-cta">Bekijk uitleg →</span>
+            <p id="kaart-lactaat-loop-desc">Korte uitleg (1–2 zinnen).</p>
+            <span class="card-cta">Bekijk testing →</span>
           </article>
         </a>
 
-        <a class="card-link" href="aanbod.html#prestatieanalyse">
+        <a class="card-link" href="testing.html#prestatieanalyse">
           <article class="card">
             <h3>Prestatieanalyse & fysiologische testing</h3>
-            <p id="kaart-prestatieanalyse-desc">Placeholder-tekst: korte uitleg van 1–2 zinnen (voor fietsers).</p>
-            <span class="card-cta">Bekijk uitleg →</span>
+            <p id="kaart-prestatieanalyse-desc">Korte uitleg (1–2 zinnen).</p>
+            <span class="card-cta">Bekijk testing →</span>
           </article>
         </a>
 
-        <a class="card-link" href="aanbod.html#metabool-profiel">
+        <a class="card-link" href="testing.html#metabool-profiel">
           <article class="card">
             <h3>Metabool profiel test</h3>
-            <p id="kaart-metabool-profiel-desc">Placeholder-tekst: korte uitleg van 1–2 zinnen (pacing/fueling/energieprofiel).</p>
-            <span class="card-cta">Bekijk uitleg →</span>
+            <p id="kaart-metabool-profiel-desc">Korte uitleg (1–2 zinnen).</p>
+            <span class="card-cta">Bekijk testing →</span>
           </article>
         </a>
 
-        <a class="card-link" href="aanbod.html#biomechanisch">
+        <a class="card-link" href="testing.html#biomechanisch">
           <article class="card">
             <h3>Biomechanische screening (lopers)</h3>
-            <p id="kaart-biomechanisch-desc">Placeholder-tekst: korte uitleg van 1–2 zinnen (analyse/efficiëntie).</p>
-            <span class="card-cta">Bekijk uitleg →</span>
+            <p id="kaart-biomechanisch-desc">Korte uitleg (1–2 zinnen).</p>
+            <span class="card-cta">Bekijk testing →</span>
           </article>
         </a>
 
-        <a class="card-link" href="aanbod.html#coaching">
+        <a class="card-link" href="coaching.html">
           <article class="card">
             <h3>Coaching (3 pakketten)</h3>
             <p id="kaart-coaching-desc">Gratis intake + begeleiding via online platform. Kies het niveau dat bij je past.</p>
-            <span class="card-cta">Bekijk pakketten →</span>
+            <span class="card-cta">Bekijk coaching →</span>
           </article>
         </a>
       </div>
     </div>
   </section>
-
-  <!-- SUCCESVERHALEN -->
-  <section id="succesverhalen" class="section alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>Succesverhalen</h2>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <img
-            src="images/SuccesStory1.jpg"
-            alt="Succesverhaal 1"
-            style="width:100%; border-radius:12px; margin-bottom:12px;"
-          />
-        </article>
-
-        <article class="card">
-          <img
-            src="images/SuccesStory2.jpg"
-            alt="Succesverhaal 2"
-            style="width:100%; border-radius:12px; margin-bottom:12px;"
-          />
-        </article>
-        <article class="card">
-          <img
-            src="images/SuccesStory3.jpg"
-            alt="Succesverhaal 3"
-            style="width:100%; border-radius:12px; margin-bottom:12px;"
-          />
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-<section id="reviews" class="section">
-  <div class="container">
-    <div class="section-head">
-      <h2>Reviews</h2>
-      <p class="muted">Wat sporters zeggen over de begeleiding</p>
-    </div>
-
-    <div class="review-slider">
-      <div id="reviewSlides"></div>
-
-      <div class="review-controls">
-        <button id="reviewPrev" aria-label="Vorige review">‹</button>
-        <button id="reviewNext" aria-label="Volgende review">›</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 
   <!-- COACHING SNEL OVERZICHT -->
   <section id="coaching" class="section alt">
@@ -234,7 +193,7 @@
       <div class="section-head">
         <h2>Coaching</h2>
         <p class="muted" id="coachingIntro">
-          Placeholder-tekst: korte uitleg. Details en inhoud per pakket staan op de aanbodpagina.
+          Persoonlijke coaching op maat, gebaseerd op data en afgestemd op jouw doelen.
         </p>
       </div>
 
@@ -249,8 +208,20 @@
             <li>Gratis intake</li>
             <li>Schema’s + platform</li>
           </ul>
-          <a class="btn btn--outline btn--block" href="aanbod.html#coaching">Bekijk details</a>
+          <a class="btn btn--outline btn--block" href="coaching.html">Bekijk coaching</a>
         </div>
+      </div>
+
+      <div class="detail-actions center" style="margin-top:18px;">
+        <a class="btn btn--outline" href="coaching.html">Bekijk alle coaching →</a>
+        <a
+          class="btn btn--primary booking-link"
+          href="https://voorbeeld-boekingssysteem.be"
+          target="_blank"
+          rel="noopener"
+        >
+          Boek afspraak
+        </a>
       </div>
     </div>
   </section>
@@ -265,14 +236,13 @@
         </p>
       </div>
 
-      <!-- Afspraak booking button (booking-link) -->
       <a
         class="btn btn--primary btn--lg booking-link"
         href="https://voorbeeld-boekingssysteem.be"
         target="_blank"
         rel="noopener"
       >
-        Boek je afspraak
+        Boek afspraak
       </a>
     </div>
   </section>
@@ -298,11 +268,12 @@
           <p class="muted" id="aboutShort">
             Placeholder-tekst: korte bio/visie, ervaring, manier van werken, enz.
           </p>
-          <a class="btn btn--outline" href="aanbod.html#over-ons">Lees meer →</a>
+          <a class="btn btn--outline" href="over-ons.html">Lees meer →</a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer">
