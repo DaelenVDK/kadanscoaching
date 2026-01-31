@@ -757,3 +757,6 @@ a{ color:inherit; text-decoration:none; }
     border-radius: 12px;
   }
 }
+.header-actions .btn {
+  white-space: nowrap;
+}
