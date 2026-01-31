@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lukas Denolf — Coaching & Lactaattesting</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta name="description" content="Coaching, lactaattesting en performance testing voor lopers en fietsers. Boek je afspraak online." />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -21,23 +22,11 @@
       </div>
     </a>
 
-    <!-- Hamburger -->
-    <button
-      class="nav-toggle"
-      id="navToggle"
-      type="button"
-      aria-label="Menu"
-      aria-expanded="false"
-      aria-controls="siteNav"
-    >
-      <span></span><span></span><span></span>
-    </button>
-
     <nav class="nav" id="siteNav" aria-label="Navigatie">
       <a id="navHomeOffer" href="testing.html">Testing</a>
       <a id="navHomeCoaching" href="coaching.html">Coaching</a>
       <a id="navHomeContact" href="over-ons.html">Over ons</a>
-      <a id="navHomeAppointment" href="#afspraak">Afspraak</a>
+      <a id="navHomeAppointment" href="index.html#afspraak">Afspraak</a>
     </nav>
 
     <div class="header-actions">
@@ -49,11 +38,9 @@
         rel="noopener"
         aria-label="Volg ons op Instagram"
       >
+        <!-- svg blijft hetzelfde -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-          <path
-            fill="currentColor"
-            d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26a1.13 1.13 0 0 1 0-2.26Z"
-          />
+          <path fill="currentColor" d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.26a1.13 1.13 0 0 1 0-2.26Z"/>
         </svg>
         <span id="instagramText">Volg ons</span>
       </a>
@@ -66,10 +53,23 @@
       >
         <span id="headerBookText">Boek afspraak</span>
       </a>
+
+      <!-- ✅ Hamburger als LAATSTE in header-actions -->
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="siteNav"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
   </div>
 </header>
+
 
 <main id="top">
 
